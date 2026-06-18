@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Python (global)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+ENV/
+env/
+
+# Secrets
+.env
+*.key
+*.pem
+
+# IDE
+.vscode/
+.idea/
