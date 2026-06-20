@@ -26,6 +26,7 @@ if str(_SRC) not in sys.path:
     sys.path.insert(0, str(_SRC))
 
 from tracer_dataset_utils import build_row, utc_now_iso  # noqa: E402
+from gate_policy_utils import preview_phase2_runtime  # noqa: E402
 
 DEFAULT_TRACES = _ROOT / "tracer_data" / "traces.jsonl"
 DEFAULT_SESSION = _ROOT / "tracer_data" / ".annotation_session.jsonl"
@@ -318,6 +319,7 @@ class AnnotationSession:
         *,
         teacher: str | None = None,
         also_chat: bool | None = None,
+        also_head_tracking: bool | None = None,
     ) -> None:
         if line_id < 0 or line_id >= len(self.snapshot):
             raise ValueError(f"line_id hors limites: {line_id}")
@@ -337,6 +339,8 @@ class AnnotationSession:
             entry["teacher"] = teacher
         if also_chat is not None:
             entry["also_chat"] = also_chat
+        if also_head_tracking is not None:
+            entry["also_head_tracking"] = also_head_tracking
 
         self.log.append(entry)
         self._append_session_entry(entry)
@@ -348,8 +352,15 @@ class AnnotationSession:
         *,
         teacher: str | None = None,
         also_chat: bool | None = None,
+        also_head_tracking: bool | None = None,
     ) -> None:
-        self._record_decision(line_id, action, teacher=teacher, also_chat=also_chat)
+        self._record_decision(
+            line_id,
+            action,
+            teacher=teacher,
+            also_chat=also_chat,
+            also_head_tracking=also_head_tracking,
+        )
 
     def undo(self) -> dict[str, Any] | None:
         if not self.log:
@@ -378,6 +389,7 @@ class AnnotationSession:
             "llm_teacher": row.get("teacher", "chat"),
             "ts": row.get("ts"),
             "also_chat": row.get("also_chat", False),
+            "also_head_tracking": row.get("also_head_tracking", False),
             "source_teacher": row.get("source_teacher"),
             "n_tools": row.get("n_tools"),
         }
@@ -471,6 +483,7 @@ class AnnotationSession:
             # correct
             new_teacher = str(decision["teacher"])
             also_chat = bool(decision.get("also_chat", False))
+            also_head_tracking = bool(decision.get("also_head_tracking", False))
             original_teacher = str(original.get("teacher", "chat"))
             source_teacher = None
             if new_teacher != original_teacher:
@@ -481,12 +494,15 @@ class AnnotationSession:
                 new_teacher,
                 ts=str(original.get("ts")) if original.get("ts") else None,
                 also_chat=also_chat,
+                also_head_tracking=also_head_tracking,
                 source_teacher=source_teacher,
             )
             merged = dict(original)
             merged.update(rebuilt)
             if not also_chat and "also_chat" in merged:
                 del merged["also_chat"]
+            if not also_head_tracking and "also_head_tracking" in merged:
+                del merged["also_head_tracking"]
             if source_teacher is None and "source_teacher" in merged:
                 del merged["source_teacher"]
             for key in ("routed_by", "accept_score", "source"):
@@ -640,8 +656,15 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 }
 .chip.selected { border-color: var(--accent); background: rgba(91,141,239,0.2); }
 .section-name { font-size: 0.8rem; color: var(--muted); margin: 0.5rem 0 0.3rem; }
-.also-chat-row { margin: 0.75rem 0; display: flex; align-items: center; gap: 0.5rem; }
+.also-chat-row { margin: 0.75rem 0; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 .also-chat-row input { width: 1rem; height: 1rem; }
+.preview-box {
+  margin: 0.75rem 0; padding: 0.75rem 1rem; border-radius: 8px;
+  background: rgba(91,141,239,0.08); border: 1px solid rgba(91,141,239,0.25);
+  font-size: 0.9rem; color: var(--muted);
+}
+.preview-box strong { color: var(--text); }
+.btn-shortcut { background: #2a3348; color: var(--text); border: 1px solid var(--border); font-size: 0.85rem; padding: 0.5rem 0.75rem; }
 .recent { font-size: 0.85rem; color: var(--muted); }
 .recent li { margin: 0.25rem 0; }
 .empty { text-align: center; color: var(--muted); padding: 3rem 1rem; }
@@ -769,6 +792,7 @@ function renderCurrent(item, { keepPalette = false } = {}) {
   if (item.ts) meta.push(`ts: ${item.ts}`);
   if (item.n_tools != null) meta.push(`n_tools: ${item.n_tools}`);
   if (item.also_chat) meta.push("also_chat");
+  if (item.also_head_tracking) meta.push("also_head_tracking");
   if (item.source_teacher) meta.push(`source: ${item.source_teacher}`);
 
   content.innerHTML = `
@@ -778,6 +802,7 @@ function renderCurrent(item, { keepPalette = false } = {}) {
       <span class="badge">${escapeHtml(item.llm_teacher)}</span>
     </div>
     ${meta.length ? `<div class="meta">${meta.map(m => `<span>${escapeHtml(m)}</span>`).join("")}</div>` : ""}
+    <div id="policyPreview" class="preview-box"></div>
     <div class="actions">
       <button class="btn-validate" onclick="doAction('validate')">Valider (V)</button>
       <button class="btn-delete" onclick="doAction('delete')">Supprimer (D)</button>
@@ -786,15 +811,20 @@ function renderCurrent(item, { keepPalette = false } = {}) {
     <div id="palette" class="palette">
       <h3>Choisir le label correct</h3>
       <div class="also-chat-row">
-        <input type="checkbox" id="alsoChat"${item.also_chat ? " checked" : ""}>
+        <input type="checkbox" id="alsoChat"${item.also_chat ? " checked" : ""} onchange="updatePreview()">
         <label for="alsoChat">Aussi conversation (also_chat)</label>
+        <input type="checkbox" id="alsoHeadTracking"${item.also_head_tracking ? " checked" : ""} onchange="updatePreview()">
+        <label for="alsoHeadTracking">Regard (also_head_tracking)</label>
       </div>
+      <button class="btn-shortcut" type="button" onclick="applyEmotionPlusTalk()">Emotion + parler (also_chat)</button>
       ${labels ? renderPalette(labels.groups) : ""}
+      <div id="palettePreview" class="preview-box"></div>
       <div style="margin-top:0.75rem">
         <button class="btn-correct" onclick="confirmCorrection()">Confirmer (Entree)</button>
       </div>
     </div>
   `;
+  updatePreview(item.llm_teacher, item.also_chat, item.also_head_tracking);
   if (reopenPalette) {
     paletteOpen = true;
     document.getElementById("palette").classList.add("open");
@@ -806,6 +836,31 @@ function selectChip(val) {
   document.querySelectorAll(".chip").forEach(el => {
     el.classList.toggle("selected", el.dataset.value === val);
   });
+  updatePreview();
+}
+
+function applyEmotionPlusTalk() {
+  const chatBox = document.getElementById("alsoChat");
+  if (chatBox) chatBox.checked = true;
+  updatePreview();
+}
+
+async function updatePreview(teacher, alsoChat, alsoHeadTracking) {
+  const t = teacher || selectedTeacher || (current && current.llm_teacher) || "chat";
+  const chat = alsoChat != null ? alsoChat : (document.getElementById("alsoChat")?.checked || false);
+  const track = alsoHeadTracking != null ? alsoHeadTracking : (document.getElementById("alsoHeadTracking")?.checked || false);
+  const qs = new URLSearchParams({ teacher: t, also_chat: String(chat), also_head_tracking: String(track) });
+  let preview;
+  try {
+    preview = await api("/api/preview?" + qs.toString());
+  } catch (e) {
+    preview = { summary: "Preview indisponible" };
+  }
+  const html = `<strong>Phase 2 (preview)</strong> — ${escapeHtml(preview.summary || "")}`;
+  const main = document.getElementById("policyPreview");
+  const pal = document.getElementById("palettePreview");
+  if (main) main.innerHTML = html;
+  if (pal) pal.innerHTML = html;
 }
 
 function togglePalette() {
@@ -813,11 +868,12 @@ function togglePalette() {
   document.getElementById("palette").classList.add("open");
 }
 
-async function doAction(action, teacher, alsoChat) {
+async function doAction(action, teacher, alsoChat, alsoHeadTracking) {
   if (!current && action !== "undo") return;
   const body = { line_id: current.line_id, action };
   if (teacher) body.teacher = teacher;
   if (alsoChat != null) body.also_chat = alsoChat;
+  if (alsoHeadTracking != null) body.also_head_tracking = alsoHeadTracking;
   await api("/api/annotate", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify(body) });
   paletteOpen = false;
   await refresh({ forceRerender: true });
@@ -826,13 +882,15 @@ async function doAction(action, teacher, alsoChat) {
 async function correctWith(teacher) {
   if (!current) return;
   const alsoChat = teacher.startsWith("play_emotion:") ? !!current.also_chat : false;
-  await doAction("correct", teacher, alsoChat);
+  const alsoTrack = teacher.startsWith("play_emotion:") ? !!current.also_head_tracking : false;
+  await doAction("correct", teacher, alsoChat, alsoTrack);
 }
 
 function confirmCorrection() {
   if (!selectedTeacher) { toast("Selectionnez un label"); return; }
   const alsoChat = document.getElementById("alsoChat")?.checked || false;
-  doAction("correct", selectedTeacher, alsoChat);
+  const alsoHeadTracking = document.getElementById("alsoHeadTracking")?.checked || false;
+  doAction("correct", selectedTeacher, alsoChat, alsoHeadTracking);
 }
 
 async function refresh({ forceRerender = false } = {}) {
@@ -957,6 +1015,21 @@ class AnnotationHandler(BaseHTTPRequestHandler):
                         ]
                     }
                 )
+            elif path == "/api/preview":
+                teacher = qs.get("teacher", ["chat"])[0]
+                also_chat = qs.get("also_chat", ["false"])[0].lower() in ("1", "true", "yes")
+                also_head = qs.get("also_head_tracking", ["false"])[0].lower() in (
+                    "1",
+                    "true",
+                    "yes",
+                )
+                self._send_json(
+                    preview_phase2_runtime(
+                        teacher,
+                        also_chat=also_chat,
+                        also_head_tracking=also_head,
+                    )
+                )
             else:
                 self._send_json({"error": "not found"}, status=404)
         except Exception as exc:
@@ -974,6 +1047,7 @@ class AnnotationHandler(BaseHTTPRequestHandler):
                     str(data["action"]),
                     teacher=data.get("teacher"),
                     also_chat=data.get("also_chat"),
+                    also_head_tracking=data.get("also_head_tracking"),
                 )
                 self._send_json({"ok": True})
             elif path == "/api/undo":

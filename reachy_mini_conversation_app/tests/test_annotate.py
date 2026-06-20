@@ -86,6 +86,28 @@ def test_correct_sets_also_chat(tmp_path: Path) -> None:
     assert output[0]["source_teacher"] == "chat"
 
 
+def test_correct_sets_also_head_tracking(tmp_path: Path) -> None:
+    traces = tmp_path / "traces.jsonl"
+    session_file = tmp_path / ".annotation_session.jsonl"
+    rows = [
+        {"input": "Boo !", "teacher": "play_emotion:surprised", "ts": "2026-06-18T12:49:43Z", "n_tools": 1},
+    ]
+    session = _session(traces, session_file, rows)
+    session.annotate(0, "correct", teacher="play_emotion:surprised", also_head_tracking=True)
+
+    output, _ = session.apply_decisions()
+    assert output[0]["also_head_tracking"] is True
+    assert "also_chat" not in output[0]
+
+
+def test_preview_phase2_runtime_helper() -> None:
+    from gate_policy_utils import preview_phase2_runtime
+
+    out = preview_phase2_runtime("play_emotion:surprised", also_head_tracking=True)
+    assert out["mode"] == "bypass"
+    assert len(out["actions"]) == 2
+
+
 def test_delete_removes_line(tmp_path: Path) -> None:
     traces = tmp_path / "traces.jsonl"
     session_file = tmp_path / ".annotation_session.jsonl"

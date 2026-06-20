@@ -38,6 +38,7 @@ def build_row(
     ts: str | None = None,
     source: str | None = None,
     also_chat: bool = False,
+    also_head_tracking: bool = False,
     source_teacher: str | None = None,
 ) -> dict[str, Any]:
     """Build one JSONL row compatible with trace_collector output."""
@@ -52,6 +53,8 @@ def build_row(
     }
     if also_chat:
         row["also_chat"] = True
+    if also_head_tracking:
+        row["also_head_tracking"] = True
     if source_teacher is not None:
         row["source_teacher"] = source_teacher
     if source is not None:

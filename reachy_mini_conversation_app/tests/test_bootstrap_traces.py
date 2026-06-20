@@ -148,4 +148,7 @@ def test_tool_fields_match_make_label(teacher: str, tool_name: str, args: dict) 
 def test_build_row_optional_fields() -> None:
     row = build_row("Salut", "chat", source="bootstrap", also_chat=True)
     assert row["also_chat"] is True
+
+    row2 = build_row("Boo", "play_emotion:surprised", also_head_tracking=True)
+    assert row2["also_head_tracking"] is True
     assert row["source"] == "bootstrap"

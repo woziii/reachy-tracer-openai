@@ -5,7 +5,7 @@ import json
 import logging
 from typing import Any
 from pathlib import Path
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from dataclasses import dataclass
 
 
@@ -166,4 +166,4 @@ class TraceCollector:
 
 
 def _utc_now_iso() -> str:
-    return datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

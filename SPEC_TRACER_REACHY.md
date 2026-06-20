@@ -383,6 +383,73 @@ await self.connection.conversation.item.create(item={
 - [ ] Interruption utilisateur pendant un bypass : `speech_started` clear la queue audio — vérifier qu'aucun état du gate ne reste bloqué.
 - [ ] Backend ≠ openai : le gate doit refuser de s'activer avec un warning clair.
 
+### 9.5 Évolution Phase 2 — bypass enrichi, hybrid, defer *(non livré)*
+
+> **Statut** : spécifié et documenté ; **aucun changement runtime** en Phase 1.
+> Référence complète : [`tracer_data/doc/GATE_POLICY_PHASE2.md`](reachy_mini_conversation_app/tracer_data/doc/GATE_POLICY_PHASE2.md).
+
+#### Architecture cible
+
+```mermaid
+flowchart LR
+  predict[TRACER predict → teacher]
+  resolve[resolve_actions + flags also_*]
+  bypass[bypass silencieux]
+  hybrid[hybrid voix + tools]
+  defer[defer LLM]
+
+  predict --> resolve
+  resolve --> bypass
+  resolve --> hybrid
+  resolve --> defer
+```
+
+- **Bypass** (existant) : tools locaux, pas de voix LLM.
+- **Bypass enrichi** (Phase 2) : plusieurs tools, ordre obligatoire `head_tracking:on` puis `play_emotion:*`.
+- **Hybrid** (Phase 2) : tools locaux d'abord, puis `response.create(instructions=...)` — pas de double exécution par le LLM.
+- **Defer** (existant) : LLM + TTS, system prompt Reachy seul.
+
+#### `GateDecision` étendu *(Phase 2)*
+
+```python
+GateDecision = Literal["bypass", "hybrid", "defer"]
+```
+
+`resolve_actions(teacher, also_chat, also_head_tracking)` produit la liste ordonnée de tools. Les candidats viennent de `derive_gate_policy.py` (seuils ≥ 3 traces, ≥ 60 %), validés humainement avant intégration.
+
+#### Multi-tools : ordre et fallback
+
+| Tool | Système | Conflit |
+|------|---------|---------|
+| `head_tracking:on` | `camera_worker.set_head_tracking_enabled()` | Orthogonal |
+| `play_emotion` | `movement_manager.queue_move()` | Fusion offsets (voulu) |
+
+1. Ordre : `head_tracking:on` **puis** `play_emotion`
+2. Erreur tool → defer LLM (`_safe_response_create`) — pas d'échec muet
+3. Hybrid : consigne `instructions=` avec interdiction d'appeler un tool
+
+#### Format instructions LLM (non dialogique)
+
+**Problème actuel** : chaque tool bypass injecte un faux message `role: user` — multi-tools = N fausses lignes user.
+
+**Phase 2** :
+- Hybrid : `response.create(instructions=...)` uniquement (consigne opérationnelle, pas de duplication du system prompt Reachy)
+- Post-bypass : un seul bloc `<<gate_state>>` au lieu de N messages user
+- Seuls les vrais transcripts micro ont `role: user` sans marqueur `<<gate_*>>`
+
+Template hybrid documenté dans GATE_POLICY_PHASE2.md § « Format instructions LLM ».
+
+#### Checklist validation robot (avant activation Phase 2)
+
+- [ ] D1 — Surprise + regard : bypass enrichi silencieux `[head_tracking:on, play_emotion:surprised]`
+- [ ] D2 — Marron + voix : hybrid émotion + phrase courte (~12 mots)
+- [ ] D3 — Chat pur : defer inchangé
+- [ ] D4 — Commande pure : bypass existant inchangé
+- [ ] Pas de double exécution tool en hybrid
+- [ ] Fallback defer si erreur tool multi-actions
+- [ ] Trace collector logue toutes les actions (backlog Phase 2)
+- [ ] Latence hybrid ≤ defer + marge acceptable
+
 ---
 
 ## 10. Protocole de test final

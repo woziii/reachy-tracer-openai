@@ -53,7 +53,9 @@ tmp/
 cache/
 
 # Intent Gate TRACER data (traces, artifacts) - never commit
-tracer_data/
+tracer_data/*
+!tracer_data/doc/
+!tracer_data/doc/**
 
 # macOS
 .DS_Store

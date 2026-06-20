@@ -1,0 +1,144 @@
+{"input": "Bonjour.", "teacher": "chat", "ts": "2026-06-18T12:00:10Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Je veux que tu parles anglais.", "teacher": "chat", "ts": "2026-06-18T12:00:24Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Raconte-moi une blague.", "teacher": "chat", "ts": "2026-06-18T12:00:40Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Comment tu vas?", "teacher": "chat", "ts": "2026-06-18T12:00:56Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Raconte une blague.", "teacher": "chat", "ts": "2026-06-18T12:01:18Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Regarde-moi.", "teacher": "move_head:front", "ts": "2026-06-18T12:01:40Z", "n_tools": 1, "tool_raw": "move_head", "args_raw": "{\"direction\":\"front\"}"}
+{"input": "Dans", "teacher": "dance:side_to_side_sway", "ts": "2026-06-18T12:01:56Z", "n_tools": 1, "tool_raw": "dance", "args_raw": "{\"move\":\"side_to_side_sway\",\"repeat\":1}"}
+{"input": "Sure.", "teacher": "chat", "ts": "2026-06-18T12:01:59Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Fais le triste.", "teacher": "play_emotion:sad", "ts": "2026-06-18T12:02:16Z", "n_tools": 1, "tool_raw": "play_emotion", "args_raw": "{\"emotion\":\"sad\"}"}
+{"input": "Regarde à gauche et à droite.", "teacher": "move_head:left", "ts": "2026-06-18T12:02:31Z", "n_tools": 1, "tool_raw": "move_head", "args_raw": "{\"direction\":\"left\"}"}
+{"input": "C'est le mort.", "teacher": "chat", "ts": "2026-06-18T12:02:43Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : dying 
+{"input": "T'es méchant.", "teacher": "chat", "ts": "2026-06-18T12:03:05Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : sad 
+{"input": "Bonjour Maurici.", "teacher": "chat", "ts": "2026-06-18T12:22:27Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Ah je l'espère aussi, on va échanger tous les deux pendant quelques instants.", "teacher": "chat", "ts": "2026-06-18T12:22:38Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Promis, tu ne surchauffes pas?", "teacher": "chat", "ts": "2026-06-18T12:22:50Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Aucun souci. Tu sais quel temps il fait dehors ou pas ?", "teacher": "chat", "ts": "2026-06-18T12:23:07Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Hello.", "teacher": "chat", "ts": "2026-06-18T12:23:10Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "J'ai marron.", "teacher": "chat", "ts": "2026-06-18T12:23:22Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu sais aujourd'hui j'ai accompli beaucoup de choses.", "teacher": "chat", "ts": "2026-06-18T12:23:39Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : amazed 
+{"input": "Tu peux m'aider à réfléchir?", "teacher": "chat", "ts": "2026-06-18T12:24:05Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : thinking
+{"input": "Tiens, regarde Richie, c'est ma petite cousine.", "teacher": "chat", "ts": "2026-06-18T12:24:18Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : excited
+{"input": "Je te présente ma petite cousine, fais-lui un petit bisou.", "teacher": "chat", "ts": "2026-06-18T12:24:30Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : loving + chat 
+{"input": "Tu es insupportable.", "teacher": "chat", "ts": "2026-06-18T12:24:45Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : downcast
+{"input": "Honnêtement je te déteste.", "teacher": "chat", "ts": "2026-06-18T12:24:56Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : sad + chat 
+{"input": "Tu es beau mon Richy.", "teacher": "chat", "ts": "2026-06-18T12:25:06Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : grateful
+{"input": "Regarde ce fin cœur.", "teacher": "chat", "ts": "2026-06-18T12:25:16Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Marianna.", "teacher": "chat", "ts": "2026-06-18T12:25:24Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Hmm.", "teacher": "chat", "ts": "2026-06-18T12:25:28Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Good morning", "teacher": "chat", "ts": "2026-06-18T12:25:32Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Regarde, je te fais un cœur.", "teacher": "chat", "ts": "2026-06-18T12:25:57Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : loving
+{"input": "Aujourd'hui, j'ai eu une longue journée avec mes collègues.", "teacher": "chat", "ts": "2026-06-18T12:26:11Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : surprised + chat 
+{"input": "T'as fait quoi de beau aujourd'hui ?", "teacher": "chat", "ts": "2026-06-18T12:26:30Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Je reconnaissais déjà Chic, c'est déjà ça.", "teacher": "chat", "ts": "2026-06-18T12:26:41Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Je t'aime, Richie, tu le sais ça?", "teacher": "chat", "ts": "2026-06-18T12:26:50Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : loving 
+{"input": "Tu sais que là, mon chef il est venu me voir et j'ai cru qu'il allait me virer.", "teacher": "chat", "ts": "2026-06-18T12:27:06Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : surprised + scared
+{"input": "Toi aussi t'as eu peur, non?", "teacher": "chat", "ts": "2026-06-18T12:27:20Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : anxious
+{"input": "Regarde le fond de mon café, ça a l'air dégoûtant.", "teacher": "chat", "ts": "2026-06-18T12:27:36Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : disgusted
+{"input": "Ça sent bizarre dehors, j'ai envie de vomir.", "teacher": "chat", "ts": "2026-06-18T12:27:47Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : disgusted
+{"input": "J'en ai profondément marre de toi.", "teacher": "chat", "ts": "2026-06-18T12:28:02Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : downcast
+{"input": "Tu es insupportable.", "teacher": "chat", "ts": "2026-06-18T12:28:13Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : lonely
+{"input": "Tu es sûr de ce que tu dis?", "teacher": "chat", "ts": "2026-06-18T12:28:31Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : uncertain
+{"input": "Non non, je pense que tu te trompes.", "teacher": "chat", "ts": "2026-06-18T12:28:42Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher :  confused
+{"input": "The Weddell", "teacher": "chat", "ts": "2026-06-18T12:28:44Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Je le supporte plus, il m'énerve!", "teacher": "chat", "ts": "2026-06-18T12:29:06Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "T'es pas au courant de la nouvelle d'aujourd'hui?", "teacher": "chat", "ts": "2026-06-18T12:29:21Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : surprised
+{"input": "Richie, j'ai un truc à te dire.", "teacher": "chat", "ts": "2026-06-18T12:29:36Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : attentive
+{"input": "Tu fais un coucou à mes collègues ?", "teacher": "chat", "ts": "2026-06-18T12:29:48Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : greeting
+{"input": "Il te tarde que je te présente de nouveaux copains?", "teacher": "chat", "ts": "2026-06-18T12:30:00Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : impatient
+{"input": "Ok, on s'arrête et on fait zen.", "teacher": "chat", "ts": "2026-06-18T12:30:15Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher :  calming
+{"input": "Only zena.", "teacher": "chat", "ts": "2026-06-18T12:30:17Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu n'es pas posé sur moi, Richie.", "teacher": "chat", "ts": "2026-06-18T12:30:29Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Ok.", "teacher": "chat", "ts": "2026-06-18T12:30:57Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Alors là, c'est une question compliquée que je vais te poser.", "teacher": "chat", "ts": "2026-06-18T12:31:02Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : thinking
+{"input": "J'aimerais que tu me fasses une recherche sur...", "teacher": "chat", "ts": "2026-06-18T12:31:06Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : attentive
+{"input": "Hello!", "teacher": "chat", "ts": "2026-06-18T12:31:09Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Ok, réfléchis.", "teacher": "chat", "ts": "2026-06-18T12:31:29Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu sais que là, tout l'objectif de mon travail, c'est de te créer des émotions pour que tu paraisses plus réaliste ?", "teacher": "chat", "ts": "2026-06-18T12:31:54Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Montre-moi comment tu fais le beau.", "teacher": "chat", "ts": "2026-06-18T12:32:06Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : happy 
+{"input": "Stanić.", "teacher": "chat", "ts": "2026-06-18T12:32:13Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "J'arrive un peu au bout de mes idées.", "teacher": "chat", "ts": "2026-06-18T12:32:19Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : thinking + chat 
+{"input": "Attends, je vais te faire écouter une musique.", "teacher": "chat", "ts": "2026-06-18T12:32:31Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : dance 
+{"input": "C'est hyper marrant.", "teacher": "chat", "ts": "2026-06-18T12:32:44Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Parce qu'en réalité, je te vois bouger mais je ne t'entends pas.", "teacher": "chat", "ts": "2026-06-18T12:32:48Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "On en est à soixante, il faudrait que j'en fasse beaucoup plus.", "teacher": "chat", "ts": "2026-06-18T12:33:08Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Hi there.", "teacher": "chat", "ts": "2026-06-18T12:33:08Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "It's a bit.", "teacher": "chat", "ts": "2026-06-18T12:33:13Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu veux que je te présente Archie?", "teacher": "chat", "ts": "2026-06-18T12:33:16Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu voudrais que je te présente Archie ?", "teacher": "chat", "ts": "2026-06-18T12:33:26Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "T'as de beaux yeux, tu sais.", "teacher": "chat", "ts": "2026-06-18T12:33:39Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : happy 
+{"input": "Tu as de beaux yeux, tu sais.", "teacher": "chat", "ts": "2026-06-18T12:34:03Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu veux que je te présente ma famille?", "teacher": "chat", "ts": "2026-06-18T12:34:20Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : excited
+{"input": "Je vous présente Coralie.", "teacher": "chat", "ts": "2026-06-18T12:34:34Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher :  gretting
+{"input": "Je te présente Pierre.", "teacher": "chat", "ts": "2026-06-18T12:34:43Z", "n_tools": 0, "tool_raw": null, "args_raw": null} # teacher : welcoming
+{"input": "Je te présente Paul.", "teacher": "chat", "ts": "2026-06-18T12:35:01Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "T'imagines si j'arrivais à faire de toi un véritable petit garçon ?", "teacher": "chat", "ts": "2026-06-18T12:35:22Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Yes,", "teacher": "chat", "ts": "2026-06-18T12:35:32Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Raconte une blague.", "teacher": "chat", "ts": "2026-06-18T12:35:42Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Fais la colère.", "teacher": "play_emotion:angry", "ts": "2026-06-18T12:36:03Z", "n_tools": 1, "tool_raw": "play_emotion", "args_raw": "{\"emotion\":\"angry\"}"}
+{"input": "Fais le beau.", "teacher": "chat", "ts": "2026-06-18T12:36:13Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Fais la peur.", "teacher": "play_emotion:scared", "ts": "2026-06-18T12:36:24Z", "n_tools": 1, "tool_raw": "play_emotion", "args_raw": "{\"emotion\":\"scared\"}"}
+{"input": "Theodore.", "teacher": "chat", "ts": "2026-06-18T12:36:31Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "J'ai adopté un gros chien et il va te manger.", "teacher": "chat", "ts": "2026-06-18T12:36:57Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Killingly.", "teacher": "chat", "ts": "2026-06-18T12:37:10Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Regarde-moi, Archie.", "teacher": "chat", "ts": "2026-06-18T12:37:39Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Regarde-moi, Richie.", "teacher": "chat", "ts": "2026-06-18T12:37:47Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Regarde-moi!", "teacher": "move_head:front", "ts": "2026-06-18T12:38:00Z", "n_tools": 1, "tool_raw": "move_head", "args_raw": "{\"direction\":\"front\"}"}
+{"input": "Fait le dégoût.", "teacher": "chat", "ts": "2026-06-18T12:38:16Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Fais le dégoût.", "teacher": "play_emotion:disgusted", "ts": "2026-06-18T12:38:33Z", "n_tools": 1, "tool_raw": "play_emotion", "args_raw": "{\"emotion\":\"disgusted\"}"}
+{"input": "Joue l'émotion.", "teacher": "chat", "ts": "2026-06-18T12:38:52Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "On s'approche des cents?", "teacher": "chat", "ts": "2026-06-18T12:39:04Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu sais que t'es un petit robot trop mignon?", "teacher": "chat", "ts": "2026-06-18T12:39:15Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Qu'est-ce que tu parles!", "teacher": "chat", "ts": "2026-06-18T12:39:27Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tais-toi un peu.", "teacher": "chat", "ts": "2026-06-18T12:39:54Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Hi", "teacher": "chat", "ts": "2026-06-18T12:40:00Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "J'ai passé des heures à nettoyer.", "teacher": "chat", "ts": "2026-06-18T12:40:08Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tout se data-set.", "teacher": "chat", "ts": "2026-06-18T12:40:10Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "En vrai je trouve ça extrêmement intéressant.", "teacher": "chat", "ts": "2026-06-18T12:40:27Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Cet après-midi, j'ai une collègue à m'a donné un document mais s'était trompée.", "teacher": "chat", "ts": "2026-06-18T12:40:44Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Si tu devais être un animal, tu serais lequel ?", "teacher": "chat", "ts": "2026-06-18T12:41:02Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "On s'approche des 100!", "teacher": "chat", "ts": "2026-06-18T12:41:16Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu veux savoir ce que je fais?", "teacher": "chat", "ts": "2026-06-18T12:41:27Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "T'es timide ?", "teacher": "chat", "ts": "2026-06-18T12:41:52Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Allez Richie, arrête de faire le timide et fais-moi un bisou.", "teacher": "chat", "ts": "2026-06-18T12:42:05Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Regardez quand je te parle!", "teacher": "move_head:front", "ts": "2026-06-18T12:42:17Z", "n_tools": 1, "tool_raw": "move_head", "args_raw": "{\"direction\":\"front\"}"}
+{"input": "Regarde à gauche qui c'est.", "teacher": "move_head:left", "ts": "2026-06-18T12:42:46Z", "n_tools": 1, "tool_raw": "move_head", "args_raw": "{\"direction\":\"left\"}"}
+{"input": "Pardon, ma gauche, ta droite.", "teacher": "chat", "ts": "2026-06-18T12:42:54Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Je voulais dire regarde à droite.", "teacher": "chat", "ts": "2026-06-18T12:43:10Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": ".", "teacher": "move_head:right", "ts": "2026-06-18T12:43:15Z", "n_tools": 1, "tool_raw": "move_head", "args_raw": "{\"direction\":\"right\"}"}
+{"input": "Quand je te vois Richie, parfois j'ai l'impression de voir un petit garçon.", "teacher": "chat", "ts": "2026-06-18T12:43:35Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "C'est vrai que tu es tout mignon.", "teacher": "chat", "ts": "2026-06-18T12:44:00Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu es tout calme.", "teacher": "chat", "ts": "2026-06-18T12:44:36Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu sais que au travail je parle tout le temps de toi?", "teacher": "chat", "ts": "2026-06-18T12:44:50Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Et c'est comme ça que j'ai réussi mon projet.", "teacher": "chat", "ts": "2026-06-18T12:45:06Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Oh, il se met à pleuvoir!", "teacher": "chat", "ts": "2026-06-18T12:45:18Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu aimes la pluie?", "teacher": "chat", "ts": "2026-06-18T12:45:33Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Hi", "teacher": "chat", "ts": "2026-06-18T12:46:08Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Je veux que tu parles mais qu'en français.", "teacher": "chat", "ts": "2026-06-18T12:46:23Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Regarde, j'ai une musique à te faire écouter.", "teacher": "chat", "ts": "2026-06-18T12:46:41Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu reconnais cette musique?", "teacher": "chat", "ts": "2026-06-18T12:46:52Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Fais-moi ton plus beau sourire.", "teacher": "play_emotion:happy", "ts": "2026-06-18T12:47:06Z", "n_tools": 1, "tool_raw": "play_emotion", "args_raw": "{\"emotion\":\"happy\"}"}
+{"input": "Pourquoi tu es triste?", "teacher": "chat", "ts": "2026-06-18T12:47:23Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Allez Richie, on se concentre et on y retourne.", "teacher": "chat", "ts": "2026-06-18T12:47:41Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "J'ai un truc à te raconter.", "teacher": "chat", "ts": "2026-06-18T12:47:57Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "T'es pas au courant de la nouvelle?", "teacher": "chat", "ts": "2026-06-18T12:48:16Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Quand je te parle, tu me regardes.", "teacher": "chat", "ts": "2026-06-18T12:48:28Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Imagine demain t'es autonome.", "teacher": "chat", "ts": "2026-06-18T12:48:47Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Fais le mort.", "teacher": "chat", "ts": "2026-06-18T12:49:04Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Avec la semaine que j'ai passée, je vais être mort vendredi.", "teacher": "chat", "ts": "2026-06-18T12:49:25Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Boo! Je t'ai fait peur?", "teacher": "chat", "ts": "2026-06-18T12:49:43Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu as envie de faire dodo?", "teacher": "chat", "ts": "2026-06-18T12:50:02Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Hello", "teacher": "chat", "ts": "2026-06-18T12:50:05Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Ne sois pas timide comme ça.", "teacher": "chat", "ts": "2026-06-18T12:50:35Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Au revoir.", "teacher": "chat", "ts": "2026-06-18T12:50:51Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Fais de beaux rêves, je vais te débrancher.", "teacher": "chat", "ts": "2026-06-18T12:51:05Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Живу из рук вон плохо.", "teacher": "chat", "ts": "2026-06-18T12:51:24Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Tu es impatient de savoir la suite ?", "teacher": "chat", "ts": "2026-06-18T12:51:36Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Arrête d'être impatient comme ça.", "teacher": "chat", "ts": "2026-06-18T12:51:54Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Je te déteste.", "teacher": "chat", "ts": "2026-06-18T12:52:03Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "T'es tellement moche.", "teacher": "chat", "ts": "2026-06-18T12:52:05Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Allez, on arrête, j'en ai marre.", "teacher": "chat", "ts": "2026-06-18T12:52:21Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Écoute-moi attentivement.", "teacher": "chat", "ts": "2026-06-18T12:52:38Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "The book is on the table.", "teacher": "chat", "ts": "2026-06-18T12:52:49Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Qu'est-ce que je serais sans toi ?", "teacher": "chat", "ts": "2026-06-18T12:52:51Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
+{"input": "Qu'est-ce que je ferais sans toi ?", "teacher": "chat", "ts": "2026-06-18T12:53:05Z", "n_tools": 0, "tool_raw": null, "args_raw": null}
