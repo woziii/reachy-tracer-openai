@@ -27,8 +27,8 @@ def parse_args() -> tuple[argparse.Namespace, list]:  # type: ignore
         choices=["yolo", "mediapipe"],
         default=None,
         help=(
-            "Optional head-tracking backend: yolo uses a local face detector in a subprocess, "
-            "mediapipe uses reachy_mini_toolbox in process. Disabled by default."
+            "Head-tracking backend: yolo uses a local face detector in a subprocess, "
+            "mediapipe uses reachy_mini_toolbox in process. Defaults to mediapipe when the camera is enabled."
         ),
     )
     parser.add_argument("--no-camera", default=False, action="store_true", help="Disable camera usage")
@@ -83,25 +83,32 @@ def initialize_camera_and_vision(
     vision_processor: Optional[VisionProcessor] = None
 
     if not args.no_camera:
-        if args.head_tracker is not None:
-            try:
-                if args.head_tracker == "yolo":
-                    from reachy_mini_conversation_app.vision.head_tracking.yolo_process import (
-                        YoloHeadTrackerProcess,
-                    )
+        tracker_backend = args.head_tracker or "mediapipe"
+        auto_default_tracker = args.head_tracker is None
+        try:
+            if tracker_backend == "yolo":
+                from reachy_mini_conversation_app.vision.head_tracking.yolo_process import (
+                    YoloHeadTrackerProcess,
+                )
 
-                    head_tracker = YoloHeadTrackerProcess()
-                    logging.getLogger(__name__).info("Using yolo head tracker subprocess")
-                else:
-                    from reachy_mini_conversation_app.vision.head_tracking.mediapipe import (
-                        MediapipeHeadTracker,
-                    )
+                head_tracker = YoloHeadTrackerProcess()
+                logging.getLogger(__name__).info("Using yolo head tracker subprocess")
+            else:
+                from reachy_mini_conversation_app.vision.head_tracking.mediapipe import (
+                    MediapipeHeadTracker,
+                )
 
-                    head_tracker = MediapipeHeadTracker()
-                    logging.getLogger(__name__).info("Using mediapipe head tracker in process")
-            except Exception as e:
+                head_tracker = MediapipeHeadTracker()
+                logging.getLogger(__name__).info("Using mediapipe head tracker in process")
+        except Exception as e:
+            if auto_default_tracker:
+                logging.getLogger(__name__).warning(
+                    "Could not auto-enable head tracking (%s). Continuing without face tracker.",
+                    e,
+                )
+            else:
                 raise CameraVisionInitializationError(
-                    f"Failed to initialize {args.head_tracker} head tracker: {e}",
+                    f"Failed to initialize {tracker_backend} head tracker: {e}",
                 ) from e
 
         camera_worker = CameraWorker(current_robot, head_tracker)

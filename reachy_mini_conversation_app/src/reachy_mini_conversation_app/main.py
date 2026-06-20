@@ -264,6 +264,23 @@ def run(
 
         personality_ui.wire_events(handler, stream_manager)
 
+        if camera_worker is not None:
+
+            def _head_tracking_status_markdown() -> str:
+                if camera_worker.head_tracker is None:
+                    return "👁️ Suivi tête : *indisponible* (MediaPipe non chargé)"
+                if camera_worker.is_head_tracking_enabled:
+                    return "🟢 **Suivi tête : ON**"
+                return "🔴 **Suivi tête : OFF**"
+
+            with stream.ui:
+                head_tracking_status = gr.Markdown(_head_tracking_status_markdown())
+                head_tracking_poll = gr.Timer(value=1.0, active=True)
+                head_tracking_poll.tick(
+                    fn=lambda: gr.update(value=_head_tracking_status_markdown()),
+                    outputs=head_tracking_status,
+                )
+
         app = gr.mount_gradio_app(app, stream.ui, path="/")
     else:
         # In headless mode, wire settings_app + instance_path to console LocalStream
